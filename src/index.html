@@ -1,0 +1,406 @@
+<html>
+    <head>
+        <title>Lens Designer</title>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
+        <script src="js/pixi.min.js"></script>
+
+		
+		<style type="text/css">
+		 
+		 #panel{
+			visibility: hidden;
+			position:absolute;
+			width: 100%;
+			height: 100px;
+			bottom: 0;
+			background-color: #483D8B;
+		}
+		#button_light{
+			position:absolute;
+			top: 38%;
+			left:31%;
+			width: 170px;
+			 outline: none;
+			 border: none;
+			height: 100px;
+			border-radius: 30px;
+			background: #ffffff;
+			font-size: 40px;
+			font-family: Lucida Console;
+			
+			color: #2f3387;}
+		#button_light:hover{
+			background: #2f3387;
+			color: #8A2BE2;
+			font-weight: bold;
+		}		
+		
+		#button_dark{
+			position:absolute;
+			top: 38%;
+			left: 53%;
+			width: 170px;
+			height: 100px;
+			outline: none;
+			 border: none;
+			border-radius: 30px;
+			outline:none;
+			background: #2f3387;
+			font-size: 40px;
+			font-family: Lucida Console;
+			color: #ffffff;
+		}
+		#button_dark:hover{
+			font-weight: bold;
+			background: #8A2BE2;
+			color: #2f3387;
+		}
+		
+		
+		#buttonLensConvex{
+			position:absolute;
+			bottom: 30px;
+			left:30px;
+			width: 80px;
+			height: 30px;
+			outline:none;
+			border-style: solid;
+			border-color: #ffffff;
+			background-color: #000000;
+			font-size: 15px;
+			font-family: simplex;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		#buttonLensConcave{
+			position:absolute;
+			bottom: 30px;
+			left:120px;
+			width: 80px;
+			height: 30px;
+			outline:none;
+			border-style: solid;
+			border-color: #ffffff;
+			background: #000000;
+			font-size: 15px;
+			font-family: simplex;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		#buttonOk{
+			position:absolute;
+			bottom: 25px;
+			left: 760px;
+			width: 40px;
+			height: 40px;
+			outline:none;
+			border-style: solid;
+			border-color: #ffffff;
+			background: #000000;
+			font-size: 15px;
+			font-family: simplex;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		
+		#buttonRestart{
+			position:absolute;
+			top: 50px;
+			left: 40px;
+			width: 100px;
+			height: 60px;
+			border-style: solid;
+			border-color: #ffffff;
+			border-radius: 12px;
+			font-size: 20px;
+			font-family: Lucida Console;
+			font-weight: bold;
+			color: #FDF5E6;
+			background: #483D8B;
+		}
+		#buttonRestart:hover{
+			background: #FDF5E6;
+			color: #483D8B;
+			
+		}
+		#textFocus{
+			position:absolute;
+			bottom: 30px;
+			left:260px;
+			width: 80px;
+			height: 30px;
+			outline:none;
+			border-style: solid;
+			border-width: 1px;
+			background: #000000;
+			font-size: 15px;
+			font-family: simplex;
+			font-weight: bold;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		#textDistanceObject{
+			position:absolute;
+			bottom: 30px;
+			left:380px;
+			width: 80px;
+			height: 30px;
+			outline:none;
+			border-style: solid;
+			border-width: 1px;
+			background: #000000;
+			font-size: 15px;
+			font-family: simplex;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		#textAngle{
+		position:absolute;
+			bottom: 30px;
+			left:500px;
+			width: 60px;
+			height: 30px;
+			outline:none;
+			border-style: solid;
+			border-width: 1px;
+			background: #000000;
+			font-size: 15px;
+			font-family: simplex;
+			font-weight: bold;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		#textHeightObject{
+		position:absolute;
+			bottom: 30px;
+			left:600px;
+			width: 70px;
+			height: 30px;
+			outline:none;
+			border-style: solid;
+			border-width: 1px;
+			background: #000000;
+			font-size: 15px;
+			font-family: simplex;
+			font-weight: bold;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		#textDistanceImage{
+		position:absolute;
+			bottom: 30px;
+			left:860px;
+			width: 80px;
+			height: 30px;
+			outline:none;
+			border-style: solid;
+			border-width: 1px;
+			background: #000000;
+			font-size: 15px;
+			font-family: simplex;
+			font-weight: bold;
+			
+			color: #ffffff;
+		}
+		#textHeightImage{
+		position:absolute;
+			bottom: 30px;
+			left:980px;
+			width: 80px;
+			height: 30px;
+			outline:none;
+			border-style: solid;
+			border-width: 1px;
+			background: #000000;
+			font-size: 15px;
+			font-family: simplex;
+			font-weight: bold;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		
+		#textTypeOfImage{
+		position:absolute;
+			bottom: 30px;
+			left:1080px;
+			width: 120px;
+			height: 30px;
+			outline:none;
+			border-style: solid;
+			border-width: 1px;
+			background: #000000;
+			font-size: 15px;
+			font-family: simplex;
+			font-weight: bold;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		
+		#textScale{
+			position:absolute;
+			bottom: 30px;
+			left:690px;
+			width: 50px;
+			height: 30px;
+			outline:none;
+			border-style: solid;
+			border-width: 1px;
+			background: #000000;
+			font-size: 15px;
+			font-family: simplex;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		#pLense{
+		position: absolute;
+			top: 8px;
+			left: 25px;
+			font-family: Lucida Console;
+			color: #FDF5E6;
+			font-size: 15px;
+		}
+		#pInput{
+			position: absolute;
+			top: 8px;
+			left: 260px;
+			font-family: Lucida Console;
+			color: #FDF5E6;
+			font-size: 15px;
+		}
+		#pResult{
+			position: absolute;
+			top: 8px;
+			left: 870px;
+			font-family: Lucida Console;
+			color: #FDF5E6;
+			font-size: 15px;
+		}
+		#pFoc{
+			position: absolute;
+			bottom: 30px;
+			left: 235px;
+			font-family: Lucida Console;
+			color: #FDF5E6;
+			font-size: 30px;
+		}
+		#pd{
+			position: absolute;
+			bottom: 30px;
+			left: 355px;
+			font-family: Lucida Console;
+			color: #FDF5E6;
+			font-size: 30px;
+		}
+		#pa{
+			position: absolute;
+			bottom: 30px;
+			left: 475px;
+			font-family: Lucida Console;
+			color: #FDF5E6;
+			font-size: 30px;
+		}
+		#pHo{
+			position: absolute;
+			bottom: 30px;
+			left: 575px;
+			font-family: Lucida Console;
+			color: #FDF5E6;
+			font-size: 30px;
+		}
+		#pf{
+			position: absolute;
+			bottom: 30px;
+			left: 835px;
+			font-family: Lucida Console;
+			color: #FDF5E6;
+			font-size: 30px;
+		}
+		#pHi{
+			position: absolute;
+			bottom: 30px;
+			left: 955px;
+			font-family: Lucida Console;
+			color: #FDF5E6;
+			font-size: 30px;
+		}
+		#pType{
+			position: absolute;
+			top: 15px;
+			left: 1080px;
+			font-family: Lucida Console;
+			color: #FDF5E6;
+			font-size: 15px;
+		}
+		#pScale{
+		position: absolute;
+			top: 15px;
+			left: 690px;
+			font-family: Lucida Console;
+			color: #FDF5E6;
+			font-size: 15px;
+		}
+		#labelStart{
+			position:absolute;
+			top: 15%;
+			left: 35%;
+			font-family: Lucida Console;
+			font-weight: bold;
+			color: #FDF5E6;
+			font-size: 48px;
+			text-align: center;
+		}
+		#labelStartSelect{
+			position:absolute;
+			top: 30%;
+			left: 480px;
+			font-family: Lucida Console;
+			color: #FDF5E6;
+			font-size: 36px;
+			text-align: center;
+		}
+		*{margin:0; padding:0;}
+		
+	
+		
+        </style>
+    </head>
+    <body>
+	<script src="js/main.js"></script>
+		
+	<div id="panel">
+		<input type = "button" id = "buttonLensConvex" value = "Convex"  onclick = "getConvex()"></input> 
+		<input type = "button" id = "buttonLensConcave" value = "Concave"  onclick = "getConcave()"></input> 
+		<input type = "button" id = "buttonOk" value = "OK"  onclick = "calcResult()"></input>
+		<input type="text"  id='textDistanceImage' value = "">
+		<input type="text"  id='textHeightImage' value = "">
+		<input type="text" value = "" id='textTypeOfImage'>
+		<input type="number" id="textDistanceObject" value="0" min="-1000" max="1000" step = "0.1">
+		<input type="number" id="textFocus" value="0" min="-1000" max="1000" step = "0.1">
+		<input type="number" id="textAngle" value="0" min="-1000" max="1000" step = "0.1" >
+		<input type="number" id="textHeightObject" value="0" min="-1000" max="1000" step = "0.1">
+		<input type="number" id="textScale" value="1" min="1" max="100" step = "1">
+		<p id="pLense" title="Choose one of the lenses below.">Indicate the type<br> &emsp;of lense</p>
+		<p id="pInput"> Input parametres</p>
+		<p id="pResult"> Results</p>
+		<p id="pFoc" title="Focal length in the scale (>0)">F</p>
+		<p id="pd" title="Distance between the object and the lens in the scale (>0)">d</p>
+		<p id="pf" title="Distance between the lens and the image in the scale (>0 if image is real, <0 if image is imagine)">f</p>
+		<p id="pa" title ="Angle between the beam and the axis (+ if ray is above the axis, - if ray is under the axis).">a</p>
+		<p id="pHo" title="Height of the object above the horizon (-15*x; 15*x)">H</p>
+		<p id="pHi" title ="Height of the image above the horizon.">h</p>
+		<p id="pType" title="Can be imagine, real, or doesn't exist.">type of Image</p>
+		<p id="pScale" title="Input x from 1 to 100 (1 scale = x units))" >Scale</p>
+		
+	</div>
+		<input type = "button" id = "button_dark" value = "Dark" onclick = "addImageDark()" style = "visibility: visible"></input> 
+		<input type = "button" id = "button_light" value = "Light" onclick = "addImageLight()" style = "visibility: visible"></input>
+		<input type = "button" id = "buttonRestart"  value= "Restart" onclick = "Restart()" style = "visibility: hidden"></input>
+		
+
+
+		<p id="labelStart" style="visibility: visible">Lens Designer</p>
+		<p id = "labelStartSelect" style="visibility: visibile">Select style</p>
+    </body>
+</html>
